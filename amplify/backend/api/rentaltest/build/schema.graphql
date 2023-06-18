@@ -1,0 +1,382 @@
+
+type Users @aws_iam @aws_api_key {
+  id: ID
+  name: String
+  pictureURL: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Answers @aws_iam @aws_api_key {
+  id: ID
+  AnswerText: String
+  timestamp: AWSDateTime
+  Users: Users
+  Prompts: Prompts
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+  answersUsersId: ID
+  answersPromptsId: ID
+}
+
+type Prompts @aws_iam @aws_api_key {
+  id: ID
+  PromptText: String
+  active: Boolean
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUsersConnection @aws_api_key @aws_iam {
+  items: [Users]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelUsersFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  pictureURL: ModelStringInput
+  and: [ModelUsersFilterInput]
+  or: [ModelUsersFilterInput]
+  not: ModelUsersFilterInput
+}
+
+type Query {
+  getUsers(id: ID!): Users @aws_api_key @aws_iam
+  listUsers(filter: ModelUsersFilterInput, limit: Int, nextToken: String): ModelUsersConnection @aws_api_key @aws_iam
+  syncUsers(filter: ModelUsersFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUsersConnection @aws_api_key @aws_iam
+  getAnswers(id: ID!): Answers @aws_api_key @aws_iam
+  listAnswers(filter: ModelAnswersFilterInput, limit: Int, nextToken: String): ModelAnswersConnection @aws_api_key @aws_iam
+  syncAnswers(filter: ModelAnswersFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelAnswersConnection @aws_api_key @aws_iam
+  getPrompts(id: ID!): Prompts @aws_api_key @aws_iam
+  listPrompts(filter: ModelPromptsFilterInput, limit: Int, nextToken: String): ModelPromptsConnection @aws_api_key @aws_iam
+  syncPrompts(filter: ModelPromptsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelPromptsConnection @aws_api_key @aws_iam
+}
+
+input ModelUsersConditionInput {
+  name: ModelStringInput
+  pictureURL: ModelStringInput
+  and: [ModelUsersConditionInput]
+  or: [ModelUsersConditionInput]
+  not: ModelUsersConditionInput
+}
+
+input CreateUsersInput {
+  id: ID
+  name: String
+  pictureURL: String
+  _version: Int
+}
+
+input UpdateUsersInput {
+  id: ID!
+  name: String
+  pictureURL: String
+  _version: Int
+}
+
+input DeleteUsersInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createUsers(input: CreateUsersInput!, condition: ModelUsersConditionInput): Users @aws_api_key @aws_iam
+  updateUsers(input: UpdateUsersInput!, condition: ModelUsersConditionInput): Users @aws_api_key @aws_iam
+  deleteUsers(input: DeleteUsersInput!, condition: ModelUsersConditionInput): Users @aws_api_key @aws_iam
+  createAnswers(input: CreateAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
+  updateAnswers(input: UpdateAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
+  deleteAnswers(input: DeleteAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
+  createPrompts(input: CreatePromptsInput!, condition: ModelPromptsConditionInput): Prompts @aws_api_key @aws_iam
+  updatePrompts(input: UpdatePromptsInput!, condition: ModelPromptsConditionInput): Prompts @aws_api_key @aws_iam
+  deletePrompts(input: DeletePromptsInput!, condition: ModelPromptsConditionInput): Prompts @aws_api_key @aws_iam
+}
+
+input ModelSubscriptionUsersFilterInput {
+  id: ModelSubscriptionIDInput
+  name: ModelSubscriptionStringInput
+  pictureURL: ModelSubscriptionStringInput
+  and: [ModelSubscriptionUsersFilterInput]
+  or: [ModelSubscriptionUsersFilterInput]
+}
+
+type Subscription {
+  onCreateUsers(filter: ModelSubscriptionUsersFilterInput): Users @aws_subscribe(mutations: ["createUsers"]) @aws_api_key @aws_iam
+  onUpdateUsers(filter: ModelSubscriptionUsersFilterInput): Users @aws_subscribe(mutations: ["updateUsers"]) @aws_api_key @aws_iam
+  onDeleteUsers(filter: ModelSubscriptionUsersFilterInput): Users @aws_subscribe(mutations: ["deleteUsers"]) @aws_api_key @aws_iam
+  onCreateAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["createAnswers"]) @aws_api_key @aws_iam
+  onUpdateAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["updateAnswers"]) @aws_api_key @aws_iam
+  onDeleteAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["deleteAnswers"]) @aws_api_key @aws_iam
+  onCreatePrompts(filter: ModelSubscriptionPromptsFilterInput): Prompts @aws_subscribe(mutations: ["createPrompts"]) @aws_api_key @aws_iam
+  onUpdatePrompts(filter: ModelSubscriptionPromptsFilterInput): Prompts @aws_subscribe(mutations: ["updatePrompts"]) @aws_api_key @aws_iam
+  onDeletePrompts(filter: ModelSubscriptionPromptsFilterInput): Prompts @aws_subscribe(mutations: ["deletePrompts"]) @aws_api_key @aws_iam
+}
+
+type ModelAnswersConnection @aws_api_key @aws_iam {
+  items: [Answers]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelAnswersFilterInput {
+  id: ModelIDInput
+  AnswerText: ModelStringInput
+  timestamp: ModelStringInput
+  and: [ModelAnswersFilterInput]
+  or: [ModelAnswersFilterInput]
+  not: ModelAnswersFilterInput
+  answersUsersId: ModelIDInput
+  answersPromptsId: ModelIDInput
+}
+
+input ModelAnswersConditionInput {
+  AnswerText: ModelStringInput
+  timestamp: ModelStringInput
+  and: [ModelAnswersConditionInput]
+  or: [ModelAnswersConditionInput]
+  not: ModelAnswersConditionInput
+  answersUsersId: ModelIDInput
+  answersPromptsId: ModelIDInput
+}
+
+input CreateAnswersInput {
+  id: ID
+  AnswerText: String
+  timestamp: AWSDateTime
+  _version: Int
+  answersUsersId: ID
+  answersPromptsId: ID
+}
+
+input UpdateAnswersInput {
+  id: ID!
+  AnswerText: String
+  timestamp: AWSDateTime
+  _version: Int
+  answersUsersId: ID
+  answersPromptsId: ID
+}
+
+input DeleteAnswersInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionAnswersFilterInput {
+  id: ModelSubscriptionIDInput
+  AnswerText: ModelSubscriptionStringInput
+  timestamp: ModelSubscriptionStringInput
+  and: [ModelSubscriptionAnswersFilterInput]
+  or: [ModelSubscriptionAnswersFilterInput]
+}
+
+type ModelPromptsConnection @aws_api_key @aws_iam {
+  items: [Prompts]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelPromptsFilterInput {
+  id: ModelIDInput
+  PromptText: ModelStringInput
+  active: ModelBooleanInput
+  and: [ModelPromptsFilterInput]
+  or: [ModelPromptsFilterInput]
+  not: ModelPromptsFilterInput
+}
+
+input ModelPromptsConditionInput {
+  PromptText: ModelStringInput
+  active: ModelBooleanInput
+  and: [ModelPromptsConditionInput]
+  or: [ModelPromptsConditionInput]
+  not: ModelPromptsConditionInput
+}
+
+input CreatePromptsInput {
+  id: ID
+  PromptText: String
+  active: Boolean
+  _version: Int
+}
+
+input UpdatePromptsInput {
+  id: ID!
+  PromptText: String
+  active: Boolean
+  _version: Int
+}
+
+input DeletePromptsInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionPromptsFilterInput {
+  id: ModelSubscriptionIDInput
+  PromptText: ModelSubscriptionStringInput
+  active: ModelSubscriptionBooleanInput
+  and: [ModelSubscriptionPromptsFilterInput]
+  or: [ModelSubscriptionPromptsFilterInput]
+}
+

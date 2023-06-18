@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "rentaltest",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "S3DeploymentBucket": "amplify-rentaltest-staging-50817-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/c91d69d41db1bfe29a2e00e52ddc4aa9f202b944"
+}

@@ -1,0 +1,93 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-rentaltest-staging-50817-authRole",
+      "UnauthRoleArn": "arn:aws:iam::670270673311:role/amplify-rentaltest-staging-50817-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::670270673311:role/amplify-rentaltest-staging-50817-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-rentaltest-staging-50817-deployment",
+      "UnauthRoleName": "amplify-rentaltest-staging-50817-unauthRole",
+      "StackName": "amplify-rentaltest-staging-50817",
+      "StackId": "arn:aws:cloudformation:us-west-1:670270673311:stack/amplify-rentaltest-staging-50817/ead1d440-b26e-11ed-8536-027b112807f7",
+      "AmplifyAppId": "d2drnn9crlddlm"
+    }
+  },
+  "api": {
+    "rentaltest": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "v3i6fffkbbbxtmda5n3ekitzsq",
+        "GraphQLAPIEndpointOutput": "https://6ewf5xamb5gqbfa344korslz6e.appsync-api.us-west-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-vhvvgspq6nerlacr626on2r3by"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2023-06-17T20:33:29.546Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-rentaltest-staging-50817-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apirentaltest"
+      },
+      "lastPushDirHash": "3vKw2YO1Lxq1HWX1akQnA7G6+JM="
+    }
+  },
+  "auth": {
+    "rentaltest53b514b1": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [
+          "GOOGLE"
+        ],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-west-1_vRMZ6vd3v",
+        "AppClientIDWeb": "39blupdq7tld174kubfrl9qgjr",
+        "AppClientID": "1atga04renhvrpn15dlbnu6lda",
+        "HostedUIDomain": "rentaltest53b514b1-53b514b1-staging",
+        "IdentityPoolId": "us-west-1:decec966-25a4-44d4-93a2-8e21a9ec2ac3",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-1:670270673311:userpool/us-west-1_vRMZ6vd3v",
+        "IdentityPoolName": "rentaltest53b514b1_identitypool_53b514b1__staging",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
+        "UserPoolName": "rentaltest53b514b1_userpool_53b514b1"
+      },
+      "lastPushTimeStamp": "2023-06-17T20:26:47.517Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-rentaltest-staging-50817-deployment/amplify-cfn-templates/auth/rentaltest53b514b1-cloudformation-template.json",
+        "logicalId": "authrentaltest53b514b1"
+      }
+    }
+  }
+}
