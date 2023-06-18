@@ -9,6 +9,9 @@ import {
   Text,
   TextField,
   View,
+  Grid,
+  Card,
+  useTheme,
   withAuthenticator,
 } from "@aws-amplify/ui-react";
 
@@ -22,8 +25,6 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 // models
 import { Prompts, Answers } from "./amplify/models";
-
-
 
 // API work
 
@@ -178,20 +179,37 @@ function App({ signOut, user }) {
     <View className="App">
       <Heading level={1}>Kittle</Heading>
 
-      <a href="/">Prompts</a> - <a href="/list">List of Prompts</a> - <a href="/answersUser">Answers</a>
-
       <header className="App-header">
+        <Grid
+          columnGap="0.5rem"
+          rowGap="0.5rem"
+          templateColumns="1fr 1fr 1fr"
+          templateRows="1fr 3fr 1fr"
+        >
+          <Card
+            columnStart="1"
+            columnEnd="2"
+          >
+            <PromptAndAnswer prompts={prompts} />
+          </Card>
+          <Card
+            columnStart="2"
+            columnEnd="-1"
+          >
+            <AnswerCardUserCollection />
+          </Card>
+
+        </Grid>
 
 
-        <BrowserRouter>
-
-          <Routes>
-            <Route path="/" element={<PromptAndAnswer prompts={prompts} />} />
-            <Route path="/list" element={<ViewAllPrompts />} />
-            {/* <Route path="/answersUser" element={<AnswersList answers={answers} />} /> */}
-            <Route path="/answersUser" element={<AnswerCardUserCollection />} />
-          </Routes>
-        </BrowserRouter>
+        {/* <BrowserRouter> */}
+        {/*   <Routes> */}
+        {/*     <Route path="/" element={<PromptAndAnswer prompts={prompts} />} /> */}
+        {/*     <Route path="/list" element={<ViewAllPrompts />} /> */}
+        {/*     {/\* <Route path="/answersUser" element={<AnswersList answers={answers} />} /> *\/} */}
+        {/*     <Route path="/answersUser" element={<AnswerCardUserCollection />} /> */}
+        {/*   </Routes> */}
+        {/* </BrowserRouter> */}
 
       </header>
 
