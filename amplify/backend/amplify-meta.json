@@ -36,12 +36,12 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-06-18T19:19:43.462Z",
+      "lastPushTimeStamp": "2023-06-25T21:38:26.372Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-rentaltest-staging-50817-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apirentaltest"
       },
-      "lastPushDirHash": "3vKw2YO1Lxq1HWX1akQnA7G6+JM="
+      "lastPushDirHash": "nXbZCr7ZA46W0s0Mk2s3raTJygE="
     }
   },
   "auth": {
@@ -80,10 +80,10 @@
         "IdentityPoolId": "us-west-1:decec966-25a4-44d4-93a2-8e21a9ec2ac3",
         "UserPoolArn": "arn:aws:cognito-idp:us-west-1:670270673311:userpool/us-west-1_vRMZ6vd3v",
         "IdentityPoolName": "rentaltest53b514b1_identitypool_53b514b1__staging",
-        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://kittle-mvp-react.netlify.app/\"],\"LogoutURLs\":[\"https://kittle-mvp-react.netlify.app/\"]}",
         "UserPoolName": "rentaltest53b514b1_userpool_53b514b1"
       },
-      "lastPushTimeStamp": "2023-06-18T19:19:43.464Z",
+      "lastPushTimeStamp": "2023-06-25T21:38:26.374Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-rentaltest-staging-50817-deployment/amplify-cfn-templates/auth/rentaltest53b514b1-cloudformation-template.json",
         "logicalId": "authrentaltest53b514b1"

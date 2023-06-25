@@ -16,5 +16,4 @@ type Prompts @model @auth(rules: [{allow: public}]) {
   id: ID
   PromptText: String
   active: Boolean
-}
- 
+} 

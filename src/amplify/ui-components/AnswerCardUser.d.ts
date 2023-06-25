@@ -5,7 +5,6 @@
  **************************************************************************/
 
 import * as React from "react";
-import { Answers, Users, Prompts } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps, IconProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -37,10 +36,6 @@ export declare type AnswerCardUserOverridesProps = {
     "\uD83E\uDD70\uFE0F 3"?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type AnswerCardUserProps = React.PropsWithChildren<Partial<ViewProps> & {
-    answers?: Answers;
-    users?: Users;
-    prompts?: Prompts;
-} & {
     overrides?: AnswerCardUserOverridesProps | undefined | null;
 }>;
 export default function AnswerCardUser(props: AnswerCardUserProps): React.ReactElement;

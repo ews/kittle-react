@@ -167,7 +167,7 @@
             "Ref": "UnauthRoleName"
           },
           "S3DeploymentBucket": "amplify-rentaltest-staging-50817-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/c91d69d41db1bfe29a2e00e52ddc4aa9f202b944",
+          "S3DeploymentRootKey": "amplify-appsync-files/b9b8631447f5d2fd19e5bb507a9e615125d031a8",
           "env": "staging"
         }
       }
@@ -209,7 +209,7 @@
           "hostedUIDomainName": "rentaltest53b514b1-53b514b1",
           "authProvidersUserPool": "Google",
           "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
-          "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
+          "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://kittle-mvp-react.netlify.app/\"],\"LogoutURLs\":[\"https://kittle-mvp-react.netlify.app/\"]}",
           "userPoolGroupList": "",
           "serviceName": "Cognito",
           "usernameCaseSensitive": false,

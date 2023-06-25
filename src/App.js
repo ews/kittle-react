@@ -32,8 +32,11 @@ import { API, DataStore } from "aws-amplify";
 import { listPrompts } from "./graphql/queries";
 
 import Prompt from './amplify/ui-components/Prompt'
+import Nav from './amplify/ui-components/Nav'
+import PromptBox from './amplify/ui-components/PromptBox'
 import PromptCollection from './amplify/ui-components/PromptCollection'
 import AnswerCardUserCollection from './amplify/ui-components/AnswerCardUserCollection'
+import ResponseFeed from './amplify/ui-components/ResponseFeed'
 import AnswerCardUser from './amplify/ui-components/AnswerCardUser'
 import AnswerCardFriend from './amplify/ui-components/AnswerCardFriend'
 
@@ -91,7 +94,8 @@ function PromptAndAnswer({ prompts }) {
 
   return (
     <View>
-      <Prompt prompts={prompts[0]} />
+      <Nav />
+      <PromptBox prompts={prompts[0]} />
       <AnswersCreateForm
         onSubmit={(fields) => {
           // Example function to trim all string inputs
@@ -184,19 +188,27 @@ function App({ signOut, user }) {
           columnGap="0.5rem"
           rowGap="0.5rem"
           templateColumns="1fr 1fr 1fr"
-          templateRows="1fr 3fr 1fr"
+          templateRows="1fr 1fr 1fr"
         >
           <Card
             columnStart="1"
             columnEnd="2"
           >
+            {/* <PromptBox prompts={prompts} /> */}
             <PromptAndAnswer prompts={prompts} />
           </Card>
           <Card
             columnStart="2"
-            columnEnd="-1"
+            columnEnd="3"
           >
             <AnswerCardUserCollection />
+          </Card>
+
+          <Card
+            columnStart="3"
+            columnEnd="-1"
+          >
+            <ResponseFeed />
           </Card>
 
         </Grid>

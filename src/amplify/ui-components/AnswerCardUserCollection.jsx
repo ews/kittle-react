@@ -40,7 +40,9 @@ export default function AnswerCardUserCollection(props) {
   return (
     <Collection
       type="list"
+      searchPlaceholder="Search..."
       direction="column"
+      alignItems="stretch"
       justifyContent="left"
       items={items || []}
       {...getOverrideProps(overrides, "AnswerCardUserCollection")}

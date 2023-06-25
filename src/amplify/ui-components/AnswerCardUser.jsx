@@ -9,7 +9,7 @@ import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Flex, Icon, Image, Text, View } from "@aws-amplify/ui-react";
 export default function AnswerCardUser(props) {
-  const { answers, users, prompts, overrides, ...rest } = props;
+  const { overrides, ...rest } = props;
   return (
     <View
       width="442px"
@@ -166,7 +166,7 @@ export default function AnswerCardUser(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
-                children={users?.name}
+                children="You"
                 {...getOverrideProps(overrides, "You")}
               ></Text>
               <Text
@@ -187,7 +187,7 @@ export default function AnswerCardUser(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
-                children={answers?.timestamp}
+                children="9:55 AM"
                 {...getOverrideProps(overrides, "9:55 AM")}
               ></Text>
             </Flex>
@@ -241,7 +241,7 @@ export default function AnswerCardUser(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children={prompts?.PromptText}
+              children="Who made you feel special this week?"
               {...getOverrideProps(
                 overrides,
                 "Who made you feel special this week?"
@@ -266,7 +266,7 @@ export default function AnswerCardUser(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={answers?.AnswerText}
+            children="Delilah complimented the pin on my jacket. She mentioned how it reminded her of her grandmother."
             {...getOverrideProps(
               overrides,
               "Delilah complimented the pin on my jacket. She mentioned how it reminded her of her grandmother."
